@@ -28,6 +28,7 @@ import {
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { paths } from "@/lib/paths";
 
 interface Props {}
 
@@ -37,11 +38,8 @@ function Header(props: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const pathName = usePathname();
 
-  const menus = [
-    { label: "Home", href: "/" },
-    { label: "Forms", href: "/forms" },
-    { label: "Charts", href: "/charts" },
-  ];
+  const menus = [{ ...paths.home }, { ...paths.Forms }, { ...paths.list }];
+
   const handleOpenMenu = () => {
     setIsOpen(true);
   };
@@ -51,7 +49,7 @@ function Header(props: Props) {
   };
 
   return (
-    <div className="flex justify-between border-1 sm:px-0 px-4 py-4 relative">
+    <div className="fixed sm:w-96 top-0 flex justify-between px-4 py-4 w-full bg-background">
       <Button variant="outline" size="icon" onClick={handleOpenMenu}>
         <HamburgerMenuIcon />
       </Button>

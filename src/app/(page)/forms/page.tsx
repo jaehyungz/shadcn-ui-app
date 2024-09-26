@@ -1,22 +1,14 @@
 import BreadcrumbExample from "@/components/custom/BreadcrumbExample";
 import FormExample from "@/components/custom/FormExample";
+import { paths } from "@/lib/paths";
 import React from "react";
 
-interface Props {}
-
-function Page(props: Props) {
-  const {} = props;
-
+function Page() {
   return (
-    <div>
-      <BreadcrumbExample
-        data={[
-          { label: "home", href: "/" },
-          { label: "forms", href: "/forms" },
-        ]}
-      />
+    <>
+      <BreadcrumbExample data={[{ ...paths.home }, { ...paths.Forms }]} />
       <FormExample />
-    </div>
+    </>
   );
 }
 

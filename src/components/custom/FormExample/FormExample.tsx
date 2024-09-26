@@ -229,20 +229,24 @@ function FormExample() {
           <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight">
             달력
           </h2>
-
-          {/* <Calendar mode="single" selected={date} onSelect={setDate} /> */}
         </form>
       </Form>
 
       <DayPicker
         mode="single"
-        className="w-full h-full flex !m-0"
+        className="w-full h-full flex !m-0 z-0"
         classNames={{
-          months: "flex w-full flex-col",
-          table: "w-full",
-          cell: "py-5 px-4 border",
-          // month: "space-y-4 w-full flex flex-col",
-          // table: "w-full h-full border-collapse space-y-1",
+          // months: "flex w-full flex-col",
+          // table: "w-full",
+          // cell: "py-5 px-4 border",
+          months:
+            "flex w-full flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 flex-1",
+          month: "space-y-4 w-full flex flex-col",
+          table: "w-full h-full border-collapse space-y-1",
+          head_row: "",
+          row: "w-full mt-2",
+          cell: "py-2 px-2 border",
+          // caption: "!z-0",
         }}
         onMonthChange={(val) => setDate(val)}
         locale={ko}
@@ -250,64 +254,30 @@ function FormExample() {
           Day: (props) => {
             const select = format(date, "MMM yyy dd", { locale: ko });
             const now = format(props.date, "MMM yyy dd", { locale: ko });
-
             if (date.getMonth() !== props.date.getMonth()) return <></>;
-
             return (
               <div
                 className="w-full h-full flex flex-col cursor-pointer"
                 onClick={() => setDate(props.date)}
               >
-                <span className="ml-auto text-lg font-semibold">
+                <span className="m-auto text-lg font-semibold">
                   {format(props.date, "d", { locale: ko })}
                 </span>
                 {/* {select === now ? "선택됨" : ""} */}
-                <div className="flex flex-col gap-2 mt-3">
-                  <Button onClick={handleBadgeClick}>badge1</Button>
+                <div className="flex flex-col gap-2">
+                  <span className="w-1 h-1 bg-red-600 rounded"></span>
+                  {/* <span className="w-1 h-1 bg-slate-950 rounded"></span> */}
+                  {/* <span className="w-1 h-1 bg-slate-950 rounded"></span> */}
+
+                  {/* <Button onClick={handleBadgeClick}>badge1</Button>
                   <Button onClick={handleBadgeClick}>badge2</Button>
                   <Button onClick={handleBadgeClick}>badge3</Button>
-                  <Button onClick={handleBadgeClick}>badge3</Button>
+                  <Button onClick={handleBadgeClick}>badge3</Button> */}
                 </div>
               </div>
             );
           },
-
-          //   Footer(props) {
-          //     return (
-          //       <>{format(props.displayMonth, "MMM yyy", { locale: ko })}월</>
-          //     );
-          //   },
-          //   Caption(props) {
-          //     console.log("현재달", props.displayMonth.getMonth()! + 1);
-
-          //     console.log("다음달", nextMonth?.getMonth()! + 1);
-          //     console.log("이전달", previousMonth?.getMonth()! + 1);
-          //     return (
-          //       <>
-          //         <span>
-          //           {format(props.displayMonth, "MMM yyy", { locale: ko })}월
-          //         </span>
-
-          //         <button
-          //           className="ml-5"
-          //           onClick={() => {
-          //             console.log(previousMonth);
-          //             previousMonth && goToMonth(previousMonth);
-          //           }}
-          //         >
-          //           앞
-          //         </button>
-          //         <button
-          //           className="ml-5"
-          //           onClick={() => nextMonth && goToMonth(nextMonth)}
-          //         >
-          //           뒤
-          //         </button>
-          //       </>
-          //     );
-          //   },
         }}
-        // selected={date}
       />
     </>
   );
