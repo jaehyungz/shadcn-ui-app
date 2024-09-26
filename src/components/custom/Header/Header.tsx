@@ -50,7 +50,10 @@ function Header(props: Props) {
 
   return (
     <>
-      <div className="fixed sm:w-96 top-0 flex justify-between px-4 py-4 w-full bg-background">
+      {/* Only Mobile */}
+      {/* <div className="fixed sm:w-96 top-0 flex justify-between px-4 py-4 w-full bg-background z-10"> */}
+      {/* Responsive */}
+      <div className="flex fixed w-full top-0  justify-between px-4 py-4 bg-background z-10">
         <Button variant="outline" size="icon" onClick={handleOpenMenu}>
           <HamburgerMenuIcon />
         </Button>
@@ -72,7 +75,7 @@ function Header(props: Props) {
       <div
         className={cn(
           "sm:w-96 w-full fixed top-0 left-0 h-full bg-card transition-transform",
-          isOpen ? "translate-x-0 z-10" : "-translate-x-full"
+          isOpen ? "translate-x-0 z-20" : "-translate-x-full"
         )}
       >
         <div className="flex flex-col p-5">
@@ -111,7 +114,7 @@ function Header(props: Props) {
 
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black opacity-50"
+          className="z-10 fixed inset-0 bg-background opacity-50"
           onClick={handleCloseMenu}
         />
       )}

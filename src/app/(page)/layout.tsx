@@ -3,6 +3,9 @@ import "../globals.css";
 import ThemeProvider from "@/components/custom/ThemeProvider";
 import LayoutSection from "@/components/custom/LayoutSection";
 import { Toaster } from "@/components/ui/toaster";
+import { ClientProvider } from "@/api";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,15 +20,25 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Toaster />
-          <LayoutSection>{children}</LayoutSection>
-        </ThemeProvider>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2991915240600971"
+          crossOrigin="anonymous"
+        />
+
+        <ClientProvider>
+          <ReactQueryDevtools initialIsOpen={false} />
+
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Toaster />
+            <LayoutSection>{children}</LayoutSection>
+          </ThemeProvider>
+        </ClientProvider>
       </body>
     </html>
   );
