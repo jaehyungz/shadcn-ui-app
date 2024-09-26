@@ -264,15 +264,10 @@ function FormExample() {
                   {format(props.date, "d", { locale: ko })}
                 </span>
                 {/* {select === now ? "선택됨" : ""} */}
-                <div className="flex flex-col gap-2">
+                <div className="flex gap-2">
                   <span className="w-1 h-1 bg-red-600 rounded"></span>
-                  {/* <span className="w-1 h-1 bg-slate-950 rounded"></span> */}
-                  {/* <span className="w-1 h-1 bg-slate-950 rounded"></span> */}
-
-                  {/* <Button onClick={handleBadgeClick}>badge1</Button>
-                  <Button onClick={handleBadgeClick}>badge2</Button>
-                  <Button onClick={handleBadgeClick}>badge3</Button>
-                  <Button onClick={handleBadgeClick}>badge3</Button> */}
+                  <span className="w-1 h-1 bg-yellow-600 rounded"></span>
+                  <span className="w-1 h-1 bg-green-600 rounded"></span>
                 </div>
               </div>
             );
